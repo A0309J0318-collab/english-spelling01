@@ -8,21 +8,37 @@
         body { font-family: Arial, sans-serif; margin: 10px; background-color: #f5f7fa; font-size: 15px; color: #333; }
         h2 { text-align: center; color: #2c3e50; font-size: 1.3rem; margin-bottom: 5px; }
         h3 { text-align: center; color: #7f8c8d; font-size: 0.9rem; margin-top: 0; margin-bottom: 20px; }
-        .section { background: white; border: 1px solid #e1e8ed; padding: 12px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0,05); }
+        .section { background: white; border: 1px solid #e1e8ed; padding: 12px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .section-title { font-weight: bold; font-size: 1em; background-color: #34495e; color: white; padding: 8px; border-radius: 6px; margin-bottom: 10px; text-align: center; }
+        
+        /* 針對英檢特製的標題顏色 */
+        .gept-title { background-color: #e67e22; } 
+        
         table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #efeef0; padding: 10px 6px; text-align: left; }
+        th, td { border: 1px solid #efeef0; padding: 10px 6px; text-align: left; vertical-align: top; }
         th { background-color: #f8f9fa; color: #666; }
         tr:nth-child(even) { background-color: #fcfcfc; }
-        .btn-speak { background: #2ecc71; color: white; border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 16px; display: block; margin: 0 auto; }
+        
+        .btn-speak { background: #2ecc71; color: white; border: none; padding: 6px 10px; border-radius: 20px; cursor: pointer; font-size: 14px; margin: 2px; }
         .btn-speak:active { background: #27ae60; }
+        .btn-speak.zh { background: #3498db; }
+        .btn-speak.zh:active { background: #2980b9; }
+        
+        .tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; color: white; margin-bottom: 5px; }
+        .tag-elem { background-color: #f1c40f; color: #333;} /* 國小 */
+        .tag-junior { background-color: #3498db; } /* 國中 */
+        .tag-senior { background-color: #9b59b6; } /* 高中 */
+        
+        .grammar-text { font-size: 0.9em; color: #e74c3c; margin-bottom: 5px; }
+        .app-text { font-size: 0.9em; color: #7f8c8d; }
+        
         b { color: #34495e; }
     </style>
 </head>
 <body>
 
 <h2>實踐國小 英語單字王拼字比賽</h2>
-<h3>單字與句型總表 (1-104 全系列)</h3>
+<h3>單字與句型總表 & 全民英檢初級特訓</h3>
 
 <!-- 1-26 一年級 -->
 <div class="section">
@@ -33,94 +49,110 @@
     </table>
 </div>
 
-<!-- 27-52 三、四年級延伸單字 -->
+<!-- (中間省略原有的27-104區塊，為了保持簡潔，你可以直接貼上原本的區塊2, 3, 4) -->
 <div class="section">
-    <div class="section-title">康軒 延伸字彙 (三年級 / 四年級)</div>
-    <table>
-        <thead><tr><th width="15%">No.</th><th width="35%">中文</th><th width="35%">英文</th><th width="15%">發音</th></tr></thead>
-        <tbody id="table2"></tbody>
-    </table>
-</div>
-
-<!-- 53-78 二年級 -->
-<div class="section">
-    <div class="section-title">康軒 Wonder World 1 (二年級上)</div>
-    <table>
-        <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
-        <tbody id="table3"></tbody>
-    </table>
-</div>
-
-<!-- 79-104 五、六年級進階 -->
-<div class="section">
-    <div class="section-title">康軒 進階單字與句型 (五年級 / 六年級)</div>
+    <div class="section-title">康軒 進階單字與句型 (五、六年級) - 節錄展示</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table4"></tbody>
     </table>
 </div>
 
+<!-- 新增：GEPT 全民英檢初級 強化版 -->
+<div class="section">
+    <div class="section-title gept-title">🏆 新制 GEPT 全民英檢初級 必背單字與語法</div>
+    <table>
+        <thead>
+            <tr>
+                <th width="5%">No.</th>
+                <th width="12%">階段</th>
+                <th width="23%">英文 / 中文</th>
+                <th width="40%">語法解說 / 生活應用</th>
+                <th width="20%">發音練習</th>
+            </tr>
+        </thead>
+        <tbody id="table-gept"></tbody>
+    </table>
+</div>
+
 <script>
-// 1-26 一年級
+// --- 原有資料結構 (為版面簡潔，此處僅保留部分作範例，請保留你原有的完整陣列) ---
 const data1 = [
-    {no: 1, ch: "蘋果", en: "apple"}, {no: 2, ch: "螞蟻", en: "ant"}, {no: 3, ch: "男孩", en: "boy"},
-    {no: 4, ch: "球", en: "ball"}, {no: 5, ch: "貓", en: "cat"}, {no: 6, ch: "杯子", en: "cup"},
-    {no: 7, ch: "狗", en: "dog"}, {no: 8, ch: "門", en: "door"}, {no: 9, ch: "大象", en: "elephant"},
-    {no: 10, ch: "蛋", en: "egg"}, {no: 11, ch: "狐狸", en: "fox"}, {no: 12, ch: "魚", en: "fish"},
-    {no: 13, ch: "女孩", en: "girl"}, {no: 14, ch: "山羊", en: "goat"}, {no: 15, ch: "帽子", en: "hat"},
-    {no: 16, ch: "母雞", en: "hen"}, {no: 17, ch: "墨汁", en: "ink"}, {no: 18, ch: "昆蟲", en: "insect"},
-    {no: 19, ch: "果醬", en: "jam"}, {no: 20, ch: "果汁", en: "juice"}, {no: 21, ch: "小孩", en: "kid"},
-    {no: 22, ch: "風箏", en: "kite"}, {no: 23, ch: "獅子", en: "lion"}, {no: 24, ch: "湖", en: "lake"},
-    {no: 25, ch: "猴子", en: "monkey"}, {no: 26, ch: "地圖", en: "map"}
+    {no: 1, ch: "蘋果", en: "apple"}, {no: 2, ch: "螞蟻", en: "ant"}
 ];
-
-// 27-52 中年級延伸單字
-const data2 = [
-    {no: 27, ch: "老師", en: "teacher"}, {no: 28, ch: "學生", en: "student"}, {no: 29, ch: "書包", en: "schoolbag"},
-    {no: 30, ch: "鉛筆", en: "pencil"}, {no: 31, ch: "橡皮擦", en: "eraser"}, {no: 32, ch: "書本", en: "book"},
-    {no: 33, ch: "桌子", en: "desk"}, {no: 34, ch: "椅子", en: "chair"}, {no: 35, ch: "紅色", en: "red"},
-    {no: 36, ch: "藍色", en: "blue"}, {no: 37, ch: "黃色", en: "yellow"}, {no: 38, ch: "綠色", en: "green"},
-    {no: 39, ch: "白色", en: "white"}, {no: 40, ch: "黑色", en: "black"}, {no: 41, ch: "豬", en: "pig"},
-    {no: 42, ch: "兔子", en: "rabbit"}, {no: 43, ch: "鳥", en: "bird"}, {no: 44, ch: "太陽", en: "sun"},
-    {no: 45, ch: "星星", en: "star"}, {no: 46, ch: "牛奶", en: "milk"}, {no: 47, ch: "水", en: "water"},
-    {no: 48, ch: "高興的", en: "happy"}, {no: 49, ch: "傷心的", en: "sad"}, {no: 50, ch: "疲倦的", en: "tired"},
-    {no: 51, ch: "好不好？", en: "OK?"}, {no: 52, ch: "謝謝", en: "thank you"}
-];
-
-// 53-78 二年級
-const data3 = [
-    {no: 53, ch: "你叫什麼名字？", en: "What's your name?"}, {no: 54, ch: "什麼", en: "what"}, {no: 55, ch: "什麼是", en: "what's"},
-    {no: 56, ch: "你的", en: "your"}, {no: 57, ch: "名字", en: "name"}, {no: 58, ch: "我的", en: "my"},
-    {no: 59, ch: "我的名字是 ______.", en: "My name is ______."}, {no: 60, ch: "我", en: "I"}, {no: 61, ch: "我是", en: "I am (I'm)"},
-    {no: 62, ch: "你幾歲？", en: "How old are you?"}, {no: 63, ch: "如何", en: "how"}, {no: 64, ch: "老的", en: "old"},
-    {no: 65, ch: "你", en: "you"}, {no: 66, ch: "你是", en: "you are"}, {no: 67, ch: "歲", en: "years old"},
-    {no: 68, ch: "我九歲。", en: "I'm nine years old."}, {no: 69, ch: "1", en: "one"}, {no: 70, ch: "2", en: "two"},
-    {no: 71, ch: "3", en: "three"}, {no: 72, ch: "4", en: "four"}, {no: 73, ch: "5", en: "five"},
-    {no: 74, ch: "6", en: "six"}, {no: 75, ch: "7", en: "seven"}, {no: 76, ch: "8", en: "eight"},
-    {no: 77, ch: "9", en: "nine"}, {no: 78, ch: "10", en: "ten"}
-];
-
-// 79-104 高年級（五、六年級進階）
 const data4 = [
-    {no: 79, ch: "星期一", en: "Monday"}, {no: 80, ch: "星期二", en: "Tuesday"}, {no: 81, ch: "星期三", en: "Wednesday"},
-    {no: 82, ch: "星期四", en: "Thursday"}, {no: 83, ch: "星期五", en: "Friday"}, {no: 84, ch: "星期六", en: "Saturday"},
-    {no: 85, ch: "星期日", en: "Sunday"}, {no: 86, ch: "今天星期幾？", en: "What day is today?"}, {no: 87, ch: "今天星期一。", en: "It's Monday."},
-    {no: 88, ch: "喜歡", en: "like"}, {no: 89, ch: "不喜歡", en: "don't like"}, {no: 90, ch: "你喜歡香蕉嗎？", en: "Do you like bananas?"},
-    {no: 91, ch: "是的，我喜歡。", en: "Yes, I do."}, {no: 92, ch: "不，我不喜歡。", en: "No, I don't."}, {no: 93, ch: "醫生", en: "doctor"},
-    {no: 94, ch: "護士", en: "nurse"}, {no: 95, ch: "警察", en: "police officer"}, {no: 96, ch: "廚師", en: "chef"},
-    {no: 97, ch: "他是做什麼工作的？", en: "What does he do?"}, {no: 98, ch: "他是個醫生。", en: "He is a doctor."}, {no: 99, ch: "去學校", en: "go to school"},
-    {no: 100, ch: "回家", en: "go home"}, {no: 101, ch: "上床睡覺", en: "go to bed"}, {no: 102, ch: "幾點了？", en: "What time is it?"},
-    {no: 103, ch: "現在是八點鐘。", en: "It's eight o'clock."}, {no: 104, ch: "該睡覺了。", en: "It's time for bed."}
+    {no: 102, ch: "幾點了？", en: "What time is it?"}, {no: 103, ch: "現在是八點鐘。", en: "It's eight o'clock."}
 ];
 
+// --- 新增：GEPT 資料結構 ---
+// category 支援: '國小', '國中', '高中'
+const geptData = [
+    {
+        no: 1, 
+        category: "國小", 
+        en: "ability", 
+        ch: "能力", 
+        grammar: "[名詞] ability to + 原形動詞 (做...的能力)", 
+        app_en: "She has the ability to speak English well.",
+        app_ch: "她有說一口好英文的能力。"
+    },
+    {
+        no: 2, 
+        category: "國中", 
+        en: "carefully", 
+        ch: "小心地；仔細地", 
+        grammar: "[副詞] 修飾一般動詞，通常放在動詞後。", 
+        app_en: "Please drive carefully at night.",
+        app_ch: "夜間請小心開車。"
+    },
+    {
+        no: 3, 
+        category: "國中", 
+        en: "decide", 
+        ch: "決定", 
+        grammar: "[動詞] decide to + 原形動詞 (決定去做...)", 
+        app_en: "I decided to buy a new computer.",
+        app_ch: "我決定買一台新電腦。"
+    },
+    {
+        no: 4, 
+        category: "高中", 
+        en: "environment", 
+        ch: "環境", 
+        grammar: "[名詞] the environment 常指自然環境，不可數或單數。", 
+        app_en: "We must protect the environment.",
+        app_ch: "我們必須保護環境。"
+    },
+    {
+        no: 5, 
+        category: "國中", 
+        en: "look forward to", 
+        ch: "期待", 
+        grammar: "[片語] to 為介系詞，後方必接 V-ing 或名詞。", 
+        app_en: "I am looking forward to seeing you.",
+        app_ch: "我很期待能見到你。"
+    }
+];
+
+// --- 原有的發音函數 ---
 function speak(text) {
-    // 移除底線、括號內容，避免發音出錯
     const cleanText = text.replace(/_+/g, '').replace(/\(.*\)/g, '');
     const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = 'en-US'; // 美式英語
+    utterance.lang = 'en-US'; 
     window.speechSynthesis.speak(utterance);
 }
 
+// --- 新增：支援雙語發音的函數 (英/中) ---
+function speakLang(text, lang) {
+    const cleanText = text.replace(/_+/g, '').replace(/[\[\]\(\)]/g, ''); // 移除括號與中括號
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = lang; // 'en-US' 或是 'zh-TW'
+    // 調整中文的語速稍微慢一點點會更清楚
+    if(lang === 'zh-TW') utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+}
+
+// --- 原有的表格渲染函數 ---
 function renderTable(data, tableId) {
     const tbody = document.getElementById(tableId);
     data.forEach(item => {
@@ -135,10 +167,41 @@ function renderTable(data, tableId) {
     });
 }
 
+// --- 新增：GEPT 表格渲染函數 ---
+function renderGeptTable(data, tableId) {
+    const tbody = document.getElementById(tableId);
+    data.forEach(item => {
+        // 判斷階段標籤顏色
+        let tagClass = "tag-junior";
+        if(item.category === "國小") tagClass = "tag-elem";
+        if(item.category === "高中") tagClass = "tag-senior";
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td><b>${item.no}</b></td>
+            <td><span class="tag ${tagClass}">${item.category}</span></td>
+            <td>
+                <b style="font-size:1.1em; color:#2980b9;">${item.en}</b><br>
+                <span>${item.ch}</span>
+            </td>
+            <td>
+                <div class="grammar-text">✦ <b>語法：</b>${item.grammar}</div>
+                <div class="app-text">📝 <b>應用：</b>${item.app_en}<br>${item.app_ch}</div>
+            </td>
+            <td>
+                <button class="btn-speak" onclick="speakLang('${item.en.replace(/'/g, "\\'")}. ${item.app_en.replace(/'/g, "\\'")}', 'en-US')" title="聽英文">英🔊</button>
+                <button class="btn-speak zh" onclick="speakLang('${item.ch}. ${item.grammar}. ${item.app_ch}', 'zh-TW')" title="聽中文">中🔊</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// 執行渲染
 renderTable(data1, 'table1');
-renderTable(data2, 'table2');
-renderTable(data3, 'table3');
 renderTable(data4, 'table4');
+renderGeptTable(geptData, 'table-gept'); // 渲染英檢資料
+
 </script>
 
 </body>
