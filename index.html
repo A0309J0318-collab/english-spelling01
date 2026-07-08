@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kian & Eason 英語發音練習 (全)</title>
+    <title>英語單字王拼字比賽發音練習 (全)</title>
     <style>
         /* 平滑捲動效果 */
         html { scroll-behavior: smooth; }
@@ -87,7 +87,7 @@
     <a href="#gept" class="nav-gept">🏅 全民英檢</a>
 </div>
 
-<h2>Kian & Eason 英語發音練習</h2>
+<h2>實踐國小 英語單字王拼字比賽</h2>
 <h3>單字與句型總表 (1-520 全系列)</h3>
 
 <!-- 1-26 一年級 -->
@@ -509,6 +509,8 @@ function speak(text) {
     const cleanText = text.replace(/_+/g, '').replace(/\(.*\)/g, '');
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = 'en-US'; 
+// 👇 新增這一行來調整語速 (預設是 1.0，0.7 會明顯變慢)
+    utterance.rate = 0.7;
     window.speechSynthesis.speak(utterance);
 }
 
@@ -516,7 +518,13 @@ function speakLang(text, lang) {
     const cleanText = text.replace(/_+/g, '').replace(/[\[\]\(\)]/g, ''); 
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = lang; 
-    if(lang === 'zh-TW') utterance.rate = 0.9; 
+ // 👇 修改這裡的語速判斷
+    if(lang === 'zh-TW') {
+        utterance.rate = 0.8; // 中文的語速 (稍微放慢)
+    } else {
+        utterance.rate = 0.7; // 英文的語速 (放更慢，方便聽清楚例句)
+    }
+    
     window.speechSynthesis.speak(utterance);
 }
 
