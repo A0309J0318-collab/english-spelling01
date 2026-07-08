@@ -3,221 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英語單字王拼字比賽發音練習 (全)</title>
+    <title>Kina & Eason 英語單字拼字發音練習 (全)</title>
     <style>
-        /* 平滑捲動效果 */
+        /* 新增：平滑捲動 */
         html { scroll-behavior: smooth; }
         
         body { font-family: Arial, sans-serif; margin: 10px; background-color: #f5f7fa; font-size: 15px; color: #333; }
-        h2 { text-align: center; color: #2c3e50; font-size: 1.3rem; margin-bottom: 5px; margin-top: 60px; }
-        h3 { text-align: center; color: #7f8c8d; font-size: 0.9rem; margin-top: 0; margin-bottom: 20px; }
+        h2 { text-align: center; color: #2c3e50; font-size: 1.3rem; margin-bottom: 5px; }
+        h3 { text-align: center; color: #7f8c8d; font-size: 0.9rem; margin-top: 0; margin-bottom: 10px; }
         
-        /* 導覽列樣式設計 */
-        .navbar {
-            position: fixed;
+        /* 搜尋與導航區 (置頂) */
+        .sticky-nav {
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #2c3e50;
-            padding: 12px 0;
-            text-align: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            white-space: nowrap;
+            z-index: 100;
+            background: rgba(245, 247, 250, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 10px 5px;
+            border-bottom: 1px solid #e1e8ed;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        /* 快速導航條樣式 */
+        .nav-menu {
+            display: flex;
             overflow-x: auto;
+            gap: 8px;
+            padding: 5px 0;
+            white-space: nowrap;
+            scrollbar-width: none; /* 隱藏捲軸 */
         }
-        
-        .navbar a {
-            color: white;
+        .nav-menu::-webkit-scrollbar { display: none; }
+        .nav-menu a {
             text-decoration: none;
-            margin: 0 8px;
-            font-weight: bold;
+            background: #ffffff;
+            color: #34495e;
             padding: 6px 12px;
-            border-radius: 20px;
-            transition: background 0.3s;
-            font-size: 0.95rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid #dcdde1;
+            transition: all 0.2s;
         }
-        
-        .navbar a:hover { background-color: #34495e; }
-        .navbar a.nav-gept { background-color: #e67e22; }
-        .navbar a.nav-gept:hover { background-color: #d35400; }
+        .nav-menu a:hover { background: #3498db; color: white; border-color: #3498db; }
 
-        /* 設定錨點偏移，避免被置頂選單擋住 */
-        .section { background: white; border: 1px solid #e1e8ed; padding: 12px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); scroll-margin-top: 70px; }
+        #searchInput { width: 100%; max-width: 350px; padding: 10px 20px; border-radius: 20px; border: 2px solid #bdc3c7; outline: none; }
+        .badge { background-color: #ecf0f1; color: #7f8c8d; padding: 8px 15px; border-radius: 20px; font-size: 0.9em; font-weight: bold; }
+        
+        .section { background: white; border: 1px solid #e1e8ed; padding: 12px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .section-title { font-weight: bold; font-size: 1em; background-color: #34495e; color: white; padding: 8px; border-radius: 6px; margin-bottom: 10px; text-align: center; }
-        
-        .gept-title { background-color: #e67e22; } 
-        
         table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #efeef0; padding: 10px 6px; text-align: left; vertical-align: top; }
+        th, td { border: 1px solid #efeef0; padding: 10px 6px; text-align: left; }
         th { background-color: #f8f9fa; color: #666; }
         tr:nth-child(even) { background-color: #fcfcfc; }
+        .btn-speak { background: #2ecc71; color: white; border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; }
+        .btn-speak:hover { background: #27ae60; }
         
-        /* 發音按鈕樣式 */
-        .btn-speak { background: #2ecc71; color: white; border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 16px; display: block; margin: 0 auto; }
-        .btn-speak:active { background: #27ae60; }
-        
-        .btn-gept-speak { background: #2ecc71; color: white; border: none; padding: 6px 10px; border-radius: 20px; cursor: pointer; font-size: 14px; margin: 2px; }
-        .btn-gept-speak:active { background: #27ae60; }
-        .btn-gept-speak.zh { background: #3498db; }
-        .btn-gept-speak.zh:active { background: #2980b9; }
-        
-        /* 英檢標籤樣式 */
-        .tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; color: white; margin-bottom: 5px; }
-        .tag-elem { background-color: #f1c40f; color: #333;}
-        .tag-junior { background-color: #3498db; }
-        .tag-senior { background-color: #9b59b6; }
-        
-        .grammar-text { font-size: 0.9em; color: #e74c3c; margin-bottom: 5px; }
-        .app-text { font-size: 0.9em; color: #7f8c8d; }
-        
-        b { color: #34495e; }
+        /* 測驗相關樣式 (維持不變) */
+        #quizView { max-width: 600px; margin: 20px auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .btn-primary { background: #3498db; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        .btn-danger { background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<!-- 置頂導覽列 -->
-<div class="navbar">
-    <a href="#grade1">一年級</a>
-    <a href="#grade2">二年級</a>
-    <a href="#grade3">三年級</a>
-    <a href="#grade4">四年級</a>
-    <a href="#grade5">五年級</a>
-    <a href="#grade6">六年級</a>
-    <a href="#gept" class="nav-gept">🏅 全民英檢</a>
+<!-- 置頂區域 -->
+<div class="sticky-nav">
+    <h2>Kina & Eason 英語單字拼字發音練習</h2>
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="filterWords()" placeholder="🔍 搜尋單字...">
+        <span id="wordCount" class="badge">520</span>
+        <button class="btn-primary" onclick="startQuizMode()">🎮 測驗</button>
+    </div>
+    <!-- 快速導航選單 -->
+    <div class="nav-menu">
+        <a href="#g1">一年級</a>
+        <a href="#g-ext">延伸</a>
+        <a href="#g2a">二上</a>
+        <a href="#g-high">進階</a>
+        <a href="#g2b">二下</a>
+        <a href="#g3a">三上</a>
+        <a href="#g3b">三下</a>
+        <a href="#g4a">四上</a>
+        <a href="#g4b">四下</a>
+        <a href="#g5a">五上</a>
+        <a href="#g5b">五下</a>
+        <a href="#g6a">六上</a>
+    </div>
 </div>
 
-<h2>實踐國小 英語單字王拼字比賽</h2>
-<h3>單字與句型總表 (1-520 全系列)</h3>
-
-<!-- 1-26 一年級 -->
-<div class="section" id="grade1">
-    <div class="section-title">康軒 Go Go Starter 1.2 (一年級)</div>
+<div id="mainView">
+<!-- 各區塊加入 id -->
+<div class="section" id="g1">
+    <div class="section-title"> Go Go Starter 1.2 (一年級)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文</th><th width="35%">英文</th><th width="15%">發音</th></tr></thead>
         <tbody id="table1"></tbody>
     </table>
 </div>
 
-<!-- 27-52 三、四年級延伸單字 -->
-<div class="section">
-    <div class="section-title">康軒 延伸字彙 (三年級 / 四年級)</div>
+<div class="section" id="g-ext">
+    <div class="section-title"> 延伸字彙 (三年級 / 四年級)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文</th><th width="35%">英文</th><th width="15%">發音</th></tr></thead>
         <tbody id="table2"></tbody>
     </table>
 </div>
 
-<!-- 53-78 二年級上學期 -->
-<div class="section" id="grade2">
-    <div class="section-title">康軒 Wonder World 1 (二年級上)</div>
+<div class="section" id="g2a">
+    <div class="section-title"> Wonder World 1 (二年級上)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table3"></tbody>
     </table>
 </div>
 
-<!-- 79-104 五、六年級進階 -->
-<div class="section">
-    <div class="section-title">康軒 進階單字與句型 (五年級 / 六年級)</div>
+<div class="section" id="g-high">
+    <div class="section-title"> 進階單字與句型 (五年級 / 六年級)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table4"></tbody>
     </table>
 </div>
 
-<!-- 105-130 二年級下學期 -->
-<div class="section">
-    <div class="section-title">康軒 Wonder World 2 (二年級下學期)</div>
+<div class="section" id="g2b">
+    <div class="section-title"> Wonder World 2 (二年級下學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table5"></tbody>
     </table>
 </div>
 
-<!-- 131-208 三年級上學期 -->
-<div class="section" id="grade3">
-    <div class="section-title">康軒 Wonder World 3 (三年級上學期)</div>
+<div class="section" id="g3a">
+    <div class="section-title"> Wonder World 3 (三年級上學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table6"></tbody>
     </table>
 </div>
 
-<!-- 209-260 三年級下學期 -->
-<div class="section">
-    <div class="section-title">康軒 Wonder World 4 (三年級下學期)</div>
+<div class="section" id="g3b">
+    <div class="section-title"> Wonder World 4 (三年級下學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table7"></tbody>
     </table>
 </div>
 
-<!-- 261-312 四年級上學期 -->
-<div class="section" id="grade4">
-    <div class="section-title">康軒 Wonder World 5 (四年級上學期)</div>
+<div class="section" id="g4a">
+    <div class="section-title"> Wonder World 5 (四年級上學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table8"></tbody>
     </table>
 </div>
 
-<!-- 313-364 四年級下學期 -->
-<div class="section">
-    <div class="section-title">康軒 Wonder World 6 (四年級下學期)</div>
+<div class="section" id="g4b">
+    <div class="section-title"> Wonder World 6 (四年級下學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table9"></tbody>
     </table>
 </div>
 
-<!-- 365-416 五年級上學期 -->
-<div class="section" id="grade5">
-    <div class="section-title">康軒 Wonder World 7 (五年級上學期)</div>
+<div class="section" id="g5a">
+    <div class="section-title"> Wonder World 7 (五年級上學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table10"></tbody>
     </table>
 </div>
 
-<!-- 417-468 五年級下學期 -->
-<div class="section">
-    <div class="section-title">康軒 Wonder World 8 (五年級下學期)</div>
+<div class="section" id="g5b">
+    <div class="section-title"> Wonder World 8 (五年級下學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table11"></tbody>
     </table>
 </div>
 
-<!-- 469-520 六年級上學期 -->
-<div class="section" id="grade6">
-    <div class="section-title">康軒 Wonder World 9 (六年級上學期)</div>
+<div class="section" id="g6a">
+    <div class="section-title"> Wonder World 9 (六年級上學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
         <tbody id="table12"></tbody>
     </table>
 </div>
+</div>
 
-<!-- GEPT 全民英檢初級 -->
-<div class="section" id="gept">
-    <div class="section-title gept-title">🏆 新制 GEPT 全民英檢初級 必背單字與語法</div>
-    <table>
-        <thead>
-            <tr>
-                <th width="5%">No.</th>
-                <th width="12%">階段</th>
-                <th width="23%">英文 / 中文</th>
-                <th width="40%">語法解說 / 生活應用</th>
-                <th width="20%">發音練習</th>
-            </tr>
-        </thead>
-        <tbody id="table-gept"></tbody>
-    </table>
+<!-- 測驗模式視圖 -->
+<div id="quizView" style="display: none;">
+    <div class="quiz-header">
+        <div class="quiz-title">🎮 英語單字測驗</div>
+        <div class="quiz-stats"><span id="quizScore" style="color: #2ecc71;">0</span> 分 | 題號 <span id="quizProgress">1/10</span></div>
+        <button class="btn-danger" onclick="exitQuizMode()">離開測驗</button>
+    </div>
+    
+    <div id="quizSetup">
+        <p style="text-align: center; margin-bottom: 20px; color: #7f8c8d; font-size: 1.1rem;">測驗將從 520 個單字與句型中隨機出題。</p>
+        <div style="text-align: center; margin-bottom: 25px;">
+            <label style="font-weight: bold; font-size: 1.1rem; margin-right: 10px;">請選擇測驗題數：</label>
+            <select id="quizAmount" style="padding: 8px 15px; border-radius: 8px; border: 2px solid #bdc3c7; font-size: 1.1rem; outline: none;">
+                <option value="10">10 題 (小試身手)</option>
+                <option value="20">20 題 (一般測驗)</option>
+                <option value="50">50 題 (期末衝刺)</option>
+            </select>
+        </div>
+        <button class="btn-primary" style="display: block; width: 100%; font-size: 1.3rem; padding: 15px; border-radius: 12px;" onclick="beginQuiz()">🚀 開始測驗</button>
+    </div>
+
+    <div id="quizPlay" style="display: none;">
+        <div class="quiz-question" id="quizQuestionText">這裡是中文題目</div>
+        <div class="quiz-options" id="quizOptionsContainer">
+            <!-- 選擇按鈕會動態生成於此 -->
+        </div>
+    </div>
+
+    <div id="quizEnd" style="display: none; text-align: center;">
+        <div class="quiz-result">🎉 測驗結束！<br>你的總得分：<br><span id="finalScore" style="color:#2ecc71; font-weight:bold; font-size: 3rem; display:inline-block; margin-top:10px;"></span></div>
+        <button class="btn-primary" style="font-size: 1.2rem; padding: 12px 30px; margin-top: 10px;" onclick="startQuizMode()">再玩一次</button>
+    </div>
 </div>
 
 <script>
-// ================= 資料庫區塊 =================
-
 // 1-26 一年級
 const data1 = [
     {no: 1, ch: "蘋果", en: "apple"}, {no: 2, ch: "螞蟻", en: "ant"}, {no: 3, ch: "男孩", en: "boy"},
@@ -445,86 +460,17 @@ const data12 = [
     {no: 520, ch: "它在茶飲店對面。", en: "It's across from the tea shop."}
 ];
 
-// GEPT 資料結構 
-const geptData = [
-    {
-        no: 1, 
-        category: "國小", 
-        en: "ability", 
-        ch: "能力", 
-        grammar: "[名詞] ability to + 原形動詞 (做...的能力)", 
-        app_en: "She has the ability to speak English well.",
-        app_ch: "她有說一口好英文的能力。"
-    },
-    {
-        no: 2, 
-        category: "國中", 
-        en: "carefully", 
-        ch: "小心地；仔細地", 
-        grammar: "[副詞] 修飾一般動詞，通常放在動詞後。", 
-        app_en: "Please drive carefully at night.",
-        app_ch: "夜間請小心開車。"
-    },
-    {
-        no: 3, 
-        category: "國中", 
-        en: "decide", 
-        ch: "決定", 
-        grammar: "[動詞] decide to + 原形動詞 (決定去做...)", 
-        app_en: "I decided to buy a new computer.",
-        app_ch: "我決定買一台新電腦。"
-    },
-    {
-        no: 4, 
-        category: "高中", 
-        en: "environment", 
-        ch: "環境", 
-        grammar: "[名詞] the environment 常指自然環境，不可數或單數。", 
-        app_en: "We must protect the environment.",
-        app_ch: "我們必須保護環境。"
-    },
-    {
-        no: 5, 
-        category: "國中", 
-        en: "look forward to", 
-        ch: "期待", 
-        grammar: "[片語] to 為介系詞，後方必接 V-ing 或名詞。", 
-        app_en: "I am looking forward to seeing you.",
-        app_ch: "我很期待能見到你。"
-    },
-    {
-        no: 6, 
-        category: "國小", 
-        en: "practice", 
-        ch: "練習", 
-        grammar: "[動詞/名詞] practice + V-ing (練習做...)", 
-        app_en: "You need to practice speaking English every day.",
-        app_ch: "你需要每天練習說英文。"
-    }
+// 彙整所有單字資料，供測驗使用
+const allWordsData = [
+    ...data1, ...data2, ...data3, ...data4, ...data5, ...data6,
+    ...data7, ...data8, ...data9, ...data10, ...data11, ...data12
 ];
-
-// ================= 程式邏輯區塊 =================
 
 function speak(text) {
     const cleanText = text.replace(/_+/g, '').replace(/\(.*\)/g, '');
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = 'en-US'; 
-// 👇 新增這一行來調整語速 (預設是 1.0，0.7 會明顯變慢)
-    utterance.rate = 0.8;
-    window.speechSynthesis.speak(utterance);
-}
-
-function speakLang(text, lang) {
-    const cleanText = text.replace(/_+/g, '').replace(/[\[\]\(\)]/g, ''); 
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = lang; 
- // 👇 修改這裡的語速判斷
-    if(lang === 'zh-TW') {
-        utterance.rate = 0.8; // 中文的語速 (稍微放慢)
-    } else {
-        utterance.rate = 0.7; // 英文的語速 (放更慢，方便聽清楚例句)
-    }
-    
+    utterance.rate = 0.7; // 調整發音速度，若需恢復正常可改回 1.0
     window.speechSynthesis.speak(utterance);
 }
 
@@ -537,34 +483,6 @@ function renderTable(data, tableId) {
             <td>${item.ch}</td>
             <td>${item.en}</td>
             <td><button class="btn-speak" onclick="speak('${item.en.replace(/'/g, "\\'")}')">🔊</button></td>
-        `;
-        tbody.appendChild(tr);
-    });
-}
-
-function renderGeptTable(data, tableId) {
-    const tbody = document.getElementById(tableId);
-    data.forEach(item => {
-        let tagClass = "tag-junior";
-        if(item.category === "國小") tagClass = "tag-elem";
-        if(item.category === "高中") tagClass = "tag-senior";
-
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td><b>${item.no}</b></td>
-            <td><span class="tag ${tagClass}">${item.category}</span></td>
-            <td>
-                <b style="font-size:1.1em; color:#2980b9;">${item.en}</b><br>
-                <span>${item.ch}</span>
-            </td>
-            <td>
-                <div class="grammar-text">✦ <b>語法：</b>${item.grammar}</div>
-                <div class="app-text">📝 <b>應用：</b>${item.app_en}<br>${item.app_ch}</div>
-            </td>
-            <td>
-                <button class="btn-gept-speak" onclick="speakLang('${item.en.replace(/'/g, "\\'")}. ${item.app_en.replace(/'/g, "\\'")}', 'en-US')" title="聽英文">英🔊</button>
-                <button class="btn-gept-speak zh" onclick="speakLang('${item.ch}. ${item.grammar}. ${item.app_ch}', 'zh-TW')" title="聽中文">中🔊</button>
-            </td>
         `;
         tbody.appendChild(tr);
     });
@@ -583,8 +501,160 @@ renderTable(data9, 'table9');
 renderTable(data10, 'table10');
 renderTable(data11, 'table11');
 renderTable(data12, 'table12');
-renderGeptTable(geptData, 'table-gept'); 
 
+// ================= 即時搜尋與計算功能 =================
+function filterWords() {
+    // 取得使用者輸入的字並轉為小寫
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const tables = document.querySelectorAll("tbody"); 
+    let visibleCount = 0;
+
+    tables.forEach(tbody => {
+        const rows = tbody.getElementsByTagName("tr");
+        let hasVisibleRowInTable = false;
+
+        // 檢查該表格內的每一列
+        for (let i = 0; i < rows.length; i++) {
+            const rowText = rows[i].textContent.toLowerCase();
+            
+            // 如果該列的文字包含搜尋字串，就顯示，否則隱藏
+            if (rowText.includes(input)) {
+                rows[i].style.display = "";
+                visibleCount++;
+                hasVisibleRowInTable = true;
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+
+        // 如果整個區塊(某個年級)完全沒有符合的單字，就自動隱藏該區塊
+        const parentSection = tbody.closest('.section');
+        if (parentSection) {
+            parentSection.style.display = hasVisibleRowInTable ? "" : "none";
+        }
+    });
+
+    // 更新上方的計數器標籤
+    const countDisplay = document.getElementById("wordCount");
+    if (input === "") {
+        countDisplay.innerText = "共 520 個單字";
+        countDisplay.style.backgroundColor = "#ecf0f1";
+        countDisplay.style.color = "#7f8c8d";
+    } else {
+        countDisplay.innerText = `找到 ${visibleCount} 個結果`;
+        countDisplay.style.backgroundColor = "#fff3cd";
+        countDisplay.style.color = "#856404";
+    }
+}
+
+// ================= 測驗功能邏輯 =================
+let quizWords = [];
+let currentQIndex = 0;
+let quizScore = 0;
+let isAnswering = false;
+
+// 進入測驗模式介面
+function startQuizMode() {
+    document.getElementById('mainView').style.display = 'none';
+    document.getElementById('quizView').style.display = 'block';
+    document.getElementById('quizSetup').style.display = 'block';
+    document.getElementById('quizPlay').style.display = 'none';
+    document.getElementById('quizEnd').style.display = 'none';
+    document.querySelector('.search-container').style.display = 'none'; // 隱藏頂部搜尋列
+    window.scrollTo(0, 0);
+}
+
+// 離開測驗模式，回到列表
+function exitQuizMode() {
+    document.getElementById('quizView').style.display = 'none';
+    document.getElementById('mainView').style.display = 'block';
+    document.querySelector('.search-container').style.display = 'flex'; // 恢復頂部搜尋列
+}
+
+// 開始進行測驗
+function beginQuiz() {
+    const amount = parseInt(document.getElementById('quizAmount').value, 10);
+    // 隨機打亂所有單字並選取指定數量作為本次測驗題庫
+    quizWords = [...allWordsData].sort(() => 0.5 - Math.random()).slice(0, amount);
+    currentQIndex = 0;
+    quizScore = 0;
+    
+    document.getElementById('quizSetup').style.display = 'none';
+    document.getElementById('quizPlay').style.display = 'block';
+    
+    updateQuizUI();
+}
+
+// 更新題目與選項畫面
+function updateQuizUI() {
+    isAnswering = false;
+    document.getElementById('quizScore').innerText = quizScore;
+    document.getElementById('quizProgress').innerText = `${currentQIndex + 1}/${quizWords.length}`;
+    
+    const currentWord = quizWords[currentQIndex];
+    document.getElementById('quizQuestionText').innerText = currentWord.ch;
+    
+    // 產生選項：1個正確答案 + 3個隨機錯誤答案
+    let options = [currentWord];
+    let distractors = [...allWordsData].filter(w => w.no !== currentWord.no);
+    distractors.sort(() => 0.5 - Math.random());
+    
+    options.push(...distractors.slice(0, 3));
+    options.sort(() => 0.5 - Math.random()); // 打亂這四個選項的順序
+    
+    const container = document.getElementById('quizOptionsContainer');
+    container.innerHTML = '';
+    
+    // 渲染選項按鈕
+    options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-btn';
+        btn.innerText = opt.en;
+        btn.onclick = () => checkQuizAnswer(btn, opt, currentWord);
+        container.appendChild(btn);
+    });
+}
+
+// 檢查使用者的答案
+function checkQuizAnswer(btn, selected, correct) {
+    if (isAnswering) return; // 避免重複點擊
+    isAnswering = true;
+    
+    // 答題後自動念出選取的英文發音
+    speak(selected.en);
+    
+    if (selected.no === correct.no) {
+        // 答對了
+        btn.classList.add('correct');
+        quizScore += 10; // 每題 10 分
+        document.getElementById('quizScore').innerText = quizScore;
+    } else {
+        // 答錯了
+        btn.classList.add('wrong');
+        // 自動把正確答案標示出來
+        const buttons = document.querySelectorAll('.quiz-btn');
+        buttons.forEach(b => {
+            if (b.innerText === correct.en) b.classList.add('correct');
+        });
+    }
+    
+    // 延遲 1.5 秒後換下一題或結束
+    setTimeout(() => {
+        currentQIndex++;
+        if (currentQIndex < quizWords.length) {
+            updateQuizUI();
+        } else {
+            showQuizEnd();
+        }
+    }, 1500);
+}
+
+// 顯示測驗結算畫面
+function showQuizEnd() {
+    document.getElementById('quizPlay').style.display = 'none';
+    document.getElementById('quizEnd').style.display = 'block';
+    document.getElementById('finalScore').innerText = `${quizScore}`;
+}
 </script>
 
 </body>
