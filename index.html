@@ -510,7 +510,7 @@ function speak(text) {
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = 'en-US'; 
 // 👇 新增這一行來調整語速 (預設是 1.0，0.7 會明顯變慢)
-    utterance.rate = 0.7;
+    utterance.rate = 0.8;
     window.speechSynthesis.speak(utterance);
 }
 
