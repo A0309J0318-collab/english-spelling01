@@ -8,42 +8,21 @@
         body { font-family: Arial, sans-serif; margin: 10px; background-color: #f5f7fa; font-size: 15px; color: #333; }
         h2 { text-align: center; color: #2c3e50; font-size: 1.3rem; margin-bottom: 5px; }
         h3 { text-align: center; color: #7f8c8d; font-size: 0.9rem; margin-top: 0; margin-bottom: 20px; }
-        .section { background: white; border: 1px solid #e1e8ed; padding: 12px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .section { background: white; border: 1px solid #e1e8ed; padding: 12px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0,05); }
         .section-title { font-weight: bold; font-size: 1em; background-color: #34495e; color: white; padding: 8px; border-radius: 6px; margin-bottom: 10px; text-align: center; }
-        
-        /* 針對英檢特製的標題顏色 */
-        .gept-title { background-color: #e67e22; } 
-        
         table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #efeef0; padding: 10px 6px; text-align: left; vertical-align: top; }
+        th, td { border: 1px solid #efeef0; padding: 10px 6px; text-align: left; }
         th { background-color: #f8f9fa; color: #666; }
         tr:nth-child(even) { background-color: #fcfcfc; }
-        
-        /* 一般單字發音按鈕 */
         .btn-speak { background: #2ecc71; color: white; border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 16px; display: block; margin: 0 auto; }
         .btn-speak:active { background: #27ae60; }
-        
-        /* 英檢區塊特殊按鈕 */
-        .btn-gept-speak { background: #2ecc71; color: white; border: none; padding: 6px 10px; border-radius: 20px; cursor: pointer; font-size: 14px; margin: 2px; }
-        .btn-gept-speak:active { background: #27ae60; }
-        .btn-gept-speak.zh { background: #3498db; }
-        .btn-gept-speak.zh:active { background: #2980b9; }
-        
-        .tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; color: white; margin-bottom: 5px; }
-        .tag-elem { background-color: #f1c40f; color: #333;} /* 國小 */
-        .tag-junior { background-color: #3498db; } /* 國中 */
-        .tag-senior { background-color: #9b59b6; } /* 高中 */
-        
-        .grammar-text { font-size: 0.9em; color: #e74c3c; margin-bottom: 5px; }
-        .app-text { font-size: 0.9em; color: #7f8c8d; }
-        
         b { color: #34495e; }
     </style>
 </head>
 <body>
 
 <h2>實踐國小 英語單字王拼字比賽</h2>
-<h3>單字與句型總表 (1-104 全系列) & 全民英檢初級特訓</h3>
+<h3>單字與句型總表 (1-104 全系列)</h3>
 
 <!-- 1-26 一年級 -->
 <div class="section">
@@ -81,20 +60,75 @@
     </table>
 </div>
 
-<!-- 新增：GEPT 全民英檢初級 強化版 -->
+<!-- 105-130 二年級下學期 -->
 <div class="section">
-    <div class="section-title gept-title">🏆 新制 GEPT 全民英檢初級 必背單字與語法</div>
+    <div class="section-title">康軒 Wonder World 2 (二年級下學期)</div>
     <table>
-        <thead>
-            <tr>
-                <th width="5%">No.</th>
-                <th width="12%">階段</th>
-                <th width="23%">英文 / 中文</th>
-                <th width="40%">語法解說 / 生活應用</th>
-                <th width="20%">發音練習</th>
-            </tr>
-        </thead>
-        <tbody id="table-gept"></tbody>
+        <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
+        <tbody id="table5"></tbody>
+    </table>
+</div>
+
+<!-- 131-208 三年級上學期 -->
+<div class="section">
+    <div class="section-title">康軒 Wonder World 3 (三年級上學期)</div>
+    <table>
+        <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
+        <tbody id="table6"></tbody>
+    </table>
+</div>
+
+<!-- 209-260 三年級下學期 -->
+<div class="section">
+    <div class="section-title">康軒 Wonder World 4 (三年級下學期)</div>
+    <table>
+        <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
+        <tbody id="table7"></tbody>
+    </table>
+</div>
+
+<!-- 261-312 四年級上學期 -->
+<div class="section">
+    <div class="section-title">康軒 Wonder World 5 (四年級上學期)</div>
+    <table>
+        <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
+        <tbody id="table8"></tbody>
+    </table>
+</div>
+
+<!-- 313-364 四年級下學期 -->
+<div class="section">
+    <div class="section-title">康軒 Wonder World 6 (四年級下學期)</div>
+    <table>
+        <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
+        <tbody id="table9"></tbody>
+    </table>
+</div>
+
+<!-- 365-416 五年級上學期 -->
+<div class="section">
+    <div class="section-title">康軒 Wonder World 7 (五年級上學期)</div>
+    <table>
+        <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
+        <tbody id="table10"></tbody>
+    </table>
+</div>
+
+<!-- 417-468 五年級下學期 -->
+<div class="section">
+    <div class="section-title">康軒 Wonder World 8 (五年級下學期)</div>
+    <table>
+        <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
+        <tbody id="table11"></tbody>
+    </table>
+</div>
+
+<!-- 469-520 六年級上學期 -->
+<div class="section">
+    <div class="section-title">康軒 Wonder World 9 (六年級上學期)</div>
+    <table>
+        <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
+        <tbody id="table12"></tbody>
     </table>
 </div>
 
@@ -151,73 +185,192 @@ const data4 = [
     {no: 103, ch: "現在是八點鐘。", en: "It's eight o'clock."}, {no: 104, ch: "該睡覺了。", en: "It's time for bed."}
 ];
 
-// GEPT 資料結構
-const geptData = [
-    {
-        no: 1, 
-        category: "國小", 
-        en: "ability", 
-        ch: "能力", 
-        grammar: "[名詞] ability to + 原形動詞 (做...的能力)", 
-        app_en: "She has the ability to speak English well.",
-        app_ch: "她有說一口好英文的能力。"
-    },
-    {
-        no: 2, 
-        category: "國中", 
-        en: "carefully", 
-        ch: "小心地；仔細地", 
-        grammar: "[副詞] 修飾一般動詞，通常放在動詞後。", 
-        app_en: "Please drive carefully at night.",
-        app_ch: "夜間請小心開車。"
-    },
-    {
-        no: 3, 
-        category: "國中", 
-        en: "decide", 
-        ch: "決定", 
-        grammar: "[動詞] decide to + 原形動詞 (決定去做...)", 
-        app_en: "I decided to buy a new computer.",
-        app_ch: "我決定買一台新電腦。"
-    },
-    {
-        no: 4, 
-        category: "高中", 
-        en: "environment", 
-        ch: "環境", 
-        grammar: "[名詞] the environment 常指自然環境，不可數或單數。", 
-        app_en: "We must protect the environment.",
-        app_ch: "我們必須保護環境。"
-    },
-    {
-        no: 5, 
-        category: "國中", 
-        en: "look forward to", 
-        ch: "期待", 
-        grammar: "[片語] to 為介系詞，後方必接 V-ing 或名詞。", 
-        app_en: "I am looking forward to seeing you.",
-        app_ch: "我很期待能見到你。"
-    }
+// 105-130 二年級下學期
+const data5 = [
+    {no: 105, ch: "11", en: "eleven"}, {no: 106, ch: "12", en: "twelve"}, {no: 107, ch: "13", en: "thirteen"},
+    {no: 108, ch: "14", en: "fourteen"}, {no: 109, ch: "15", en: "fifteen"}, {no: 110, ch: "牠是一隻貓嗎?", en: "Is it a cat?"},
+    {no: 111, ch: "是，牠是。", en: "Yes, it is."}, {no: 112, ch: "不，牠不是。", en: "No, it's not."}, {no: 113, ch: "牠是一隻狗。", en: "It's a dog."},
+    {no: 114, ch: "一隻鳥", en: "a bird"}, {no: 115, ch: "一隻貓", en: "a cat"}, {no: 116, ch: "一隻狗", en: "a dog"},
+    {no: 117, ch: "一隻青蛙", en: "a frog"}, {no: 118, ch: "一隻兔子", en: "a rabbit"}, {no: 119, ch: "一頭公牛", en: "an ox"},
+    {no: 120, ch: "你會跳舞嗎?", en: "Can you dance?"}, {no: 121, ch: "是，我會。", en: "Yes, I can."}, {no: 122, ch: "不，我不會。", en: "No, I can't."},
+    {no: 123, ch: "跳舞", en: "dance"}, {no: 124, ch: "畫圖", en: "draw"}, {no: 125, ch: "唱歌", en: "sing"},
+    {no: 126, ch: "游泳", en: "swim"}, {no: 127, ch: "放風箏", en: "fly a kite"}, {no: 128, ch: "騎腳踏車", en: "ride a bike"},
+    {no: 129, ch: "會", en: "can"}, {no: 130, ch: "不會", en: "can not (can't)"}
 ];
 
-// 原有的發音函數
+// 131-208 三年級上學期
+const data6 = [
+    {no: 131, ch: "他是誰?", en: "Who's he?"}, {no: 132, ch: "他是我的爸爸。", en: "He's my father."}, {no: 133, ch: "誰", en: "who"},
+    {no: 134, ch: "他", en: "he"}, {no: 135, ch: "他是", en: "he is (he's)"}, {no: 136, ch: "爸爸", en: "father (dad)"},
+    {no: 137, ch: "她是誰?", en: "Who's she?"}, {no: 138, ch: "她是我的媽媽。", en: "She's my mother."}, {no: 139, ch: "她", en: "she"},
+    {no: 140, ch: "她是", en: "she is (she's)"}, {no: 141, ch: "媽媽", en: "mother (mom)"}, {no: 142, ch: "兄弟", en: "brother"},
+    {no: 143, ch: "姊妹", en: "sister"}, {no: 144, ch: "祖父", en: "grandfather (grandpa)"}, {no: 145, ch: "祖母", en: "grandmother (grandma)"},
+    {no: 146, ch: "他是老師嗎?", en: "Is he a teacher?"}, {no: 147, ch: "是，他是。", en: "Yes, he is."}, {no: 148, ch: "不，他不是。", en: "No, he's not."},
+    {no: 149, ch: "她是護士嗎?", en: "Is she a nurse?"}, {no: 150, ch: "是，她是。", en: "Yes, she is."}, {no: 151, ch: "不，她不是。", en: "No, she's not."},
+    {no: 152, ch: "一位廚師", en: "a cook"}, {no: 153, ch: "一位醫生", en: "a doctor"}, {no: 154, ch: "一位護士", en: "a nurse"},
+    {no: 155, ch: "一位學生", en: "a student"}, {no: 156, ch: "一位老師", en: "a teacher"}, {no: 157, ch: "16", en: "sixteen"},
+    {no: 158, ch: "17", en: "seventeen"}, {no: 159, ch: "18", en: "eighteen"}, {no: 160, ch: "19", en: "nineteen"},
+    {no: 161, ch: "20", en: "twenty"}, {no: 162, ch: "天氣", en: "weather"}, {no: 163, ch: "天氣如何?", en: "How's the weather?"},
+    {no: 164, ch: "天氣晴朗", en: "It's sunny."}, {no: 165, ch: "多雲的", en: "cloudy"}, {no: 166, ch: "下雨的", en: "rainy"},
+    {no: 167, ch: "晴朗的", en: "sunny"}, {no: 168, ch: "多風的", en: "windy"}, {no: 169, ch: "寒冷的", en: "cold"},
+    {no: 170, ch: "熱的", en: "hot"}, {no: 171, ch: "現在幾點?", en: "What time is it?"}, {no: 172, ch: "12點。", en: "It's twelve o'clock."},
+    {no: 173, ch: "12點半", en: "It's twelve thirty."}, {no: 174, ch: "時間", en: "time"}, {no: 175, ch: "點鐘", en: "o'clock"},
+    {no: 176, ch: "25", en: "twenty-five"}, {no: 177, ch: "30", en: "thirty"}, {no: 178, ch: "35", en: "thirty-five"},
+    {no: 179, ch: "40", en: "forty"}, {no: 180, ch: "45", en: "forty-five"}, {no: 181, ch: "50", en: "fifty"},
+    {no: 182, ch: "55", en: "fifty-five"}, {no: 183, ch: "這是你的鉛筆?", en: "Is this your pencil?"}, {no: 184, ch: "是，它是。", en: "Yes, it is."},
+    {no: 185, ch: "不，它不是。", en: "No, it's not."}, {no: 186, ch: "一本書", en: "a book"}, {no: 187, ch: "一塊橡皮擦", en: "an eraser"},
+    {no: 188, ch: "一枝筆", en: "a pen"}, {no: 189, ch: "一枝鉛筆", en: "a pencil"}, {no: 190, ch: "一支彩色筆", en: "a marker"},
+    {no: 191, ch: "一把尺", en: "a ruler"}, {no: 192, ch: "橡皮擦在哪裡?", en: "Where's the eraser?"}, {no: 193, ch: "它在椅子底下。", en: "It's under the chair."},
+    {no: 194, ch: "哪裡", en: "where"}, {no: 195, ch: "在...裡面", en: "in"}, {no: 196, ch: "在...上面", en: "on"},
+    {no: 197, ch: "在...下面", en: "under"}, {no: 198, ch: "箱子", en: "box"}, {no: 199, ch: "椅子", en: "chair"},
+    {no: 200, ch: "書桌", en: "desk"}, {no: 201, ch: "書包", en: "schoolbag"}, {no: 202, ch: "請排隊", en: "Line up, please."},
+    {no: 203, ch: "我們走吧", en: "Let's go."}, {no: 204, ch: "聽!", en: "Listen!"}, {no: 205, ch: "太棒了!", en: "Great!"},
+    {no: 206, ch: "看!", en: "Look!"}, {no: 207, ch: "太好了!", en: "Nice!"}, {no: 208, ch: "小心!", en: "Watch out!"}
+];
+
+// 209-260 三年級下學期
+const data7 = [
+    {no: 209, ch: "一起數數。", en: "Let's count."}, {no: 210, ch: "60", en: "sixty"}, {no: 211, ch: "70", en: "seventy"},
+    {no: 212, ch: "80", en: "eighty"}, {no: 213, ch: "90", en: "ninety"}, {no: 214, ch: "100", en: "one hundred"},
+    {no: 215, ch: "你在哪裡?", en: "Where are you?"}, {no: 216, ch: "我在臥室。", en: "I'm in the bedroom."}, {no: 217, ch: "媽媽在哪裡?", en: "Where's Mom?"},
+    {no: 218, ch: "她在飯廳。", en: "She's in the dining room."}, {no: 219, ch: "浴室", en: "bathroom"}, {no: 220, ch: "臥室", en: "bedroom"},
+    {no: 221, ch: "廚房", en: "kitchen"}, {no: 222, ch: "餐(飯)廳", en: "dining room"}, {no: 223, ch: "客廳", en: "living room"},
+    {no: 224, ch: "你正在做什麼?", en: "What are you doing?"}, {no: 225, ch: "我正在閱讀。", en: "I'm reading."}, {no: 226, ch: "他正在做什麼?", en: "What's he doing?"},
+    {no: 227, ch: "他正在跑步。", en: "He's running."}, {no: 228, ch: "她正在做什麼?", en: "What's she doing?"}, {no: 229, ch: "她正在寫字。", en: "She's writing."},
+    {no: 230, ch: "正在煮", en: "cooking"}, {no: 231, ch: "正在吃", en: "eating"}, {no: 232, ch: "正在閱讀", en: "reading"},
+    {no: 233, ch: "正在睡覺", en: "sleeping"}, {no: 234, ch: "正在寫字", en: "writing"}, {no: 235, ch: "正在跑步", en: "running"},
+    {no: 236, ch: "你午餐想要什麼?", en: "What do you want for lunch?"}, {no: 237, ch: "我想要一條熱狗。", en: "I want a hot dog."}, {no: 238, ch: "我想要兩個漢堡。", en: "I want two hamburgers."},
+    {no: 239, ch: "我想要一些果汁。", en: "I want some juice."}, {no: 240, ch: "一個漢堡", en: "a hamburger"}, {no: 241, ch: "漢堡(複數)", en: "hamburgers"},
+    {no: 242, ch: "一條熱狗", en: "a hot dog"}, {no: 243, ch: "熱狗(複數)", en: "hot dogs"}, {no: 244, ch: "果汁", en: "juice"},
+    {no: 245, ch: "牛奶", en: "milk"}, {no: 246, ch: "水", en: "water"}, {no: 247, ch: "冰淇淋", en: "ice cream"},
+    {no: 248, ch: "你喜歡熊嗎?", en: "Do you like bears?"}, {no: 249, ch: "是的。我喜歡。", en: "Yes, I do."}, {no: 250, ch: "不，我不喜歡。", en: "No, I don't."},
+    {no: 251, ch: "我喜歡老虎。", en: "I like tigers."}, {no: 252, ch: "熊(複數)", en: "bears"}, {no: 253, ch: "獅子(複數)", en: "lions"},
+    {no: 254, ch: "猴子(複數)", en: "monkeys"}, {no: 255, ch: "老虎(複數)", en: "tigers"}, {no: 256, ch: "斑馬(複數)", en: "zebras"},
+    {no: 257, ch: "酷!", en: "Cool!"}, {no: 258, ch: "我也是。", en: "Me too."}, {no: 259, ch: "好主意!", en: "Good idea!"},
+    {no: 260, ch: "我完成了。", en: "I'm done."}
+];
+
+// 261-312 四年級上學期
+const data8 = [
+    {no: 261, ch: "咖啡", en: "coffee"}, {no: 262, ch: "可樂", en: "cola"}, {no: 263, ch: "汽水", en: "soda"},
+    {no: 264, ch: "茶", en: "tea"}, {no: 265, ch: "珍珠奶茶", en: "bubble tea"}, {no: 266, ch: "熱巧克力", en: "hot chocolate"},
+    {no: 267, ch: "豆漿", en: "soy milk"}, {no: 268, ch: "你喜歡可樂嗎?", en: "Do you like cola?"}, {no: 269, ch: "是的，我喜歡。", en: "Yes, I do."},
+    {no: 270, ch: "不，我不喜歡。", en: "No, I don't."}, {no: 271, ch: "他喜歡茶嗎?", en: "Does he like tea?"}, {no: 272, ch: "是的，他喜歡。", en: "Yes, he does."},
+    {no: 273, ch: "她喜歡茶嗎?", en: "Does she like tea?"}, {no: 274, ch: "不，她不喜歡。她喜歡咖啡。", en: "No, she doesn't. She likes coffee."}, {no: 275, ch: "蘋果(複數)", en: "apples"},
+    {no: 276, ch: "香蕉(複數)", en: "bananas"}, {no: 277, ch: "葡萄(複數)", en: "grapes"}, {no: 278, ch: "芭樂(複數)", en: "guavas"},
+    {no: 279, ch: "柳橙(複數)", en: "oranges"}, {no: 280, ch: "木瓜(複數)", en: "papayas"}, {no: 281, ch: "鳳梨(複數)", en: "pineapples"},
+    {no: 282, ch: "你需要幾個蘋果?", en: "How many apples do you need?"}, {no: 283, ch: "我需要兩顆蘋果。", en: "I need two apples."}, {no: 284, ch: "他需要幾個柳橙?", en: "How many oranges does he need?"},
+    {no: 285, ch: "他需要七顆柳橙。", en: "He needs seven oranges."}, {no: 286, ch: "星期日", en: "Sunday"}, {no: 287, ch: "星期一", en: "Monday"},
+    {no: 288, ch: "星期二", en: "Tuesday"}, {no: 289, ch: "星期三", en: "Wednesday"}, {no: 290, ch: "星期四", en: "Thursday"},
+    {no: 291, ch: "星期五", en: "Friday"}, {no: 292, ch: "星期六", en: "Saturday"}, {no: 293, ch: "今天", en: "today"},
+    {no: 294, ch: "今天是星期幾?", en: "What day is today?"}, {no: 295, ch: "今天是星期日。", en: "It's Sunday."}, {no: 296, ch: "今天是星期一嗎?", en: "Is it Monday today?"},
+    {no: 297, ch: "是的，它是。", en: "Yes, it is."}, {no: 298, ch: "不，它不是。今天星期二。", en: "No, it isn't. It's Tuesday."}, {no: 299, ch: "美術", en: "art"},
+    {no: 300, ch: "英文", en: "English"}, {no: 301, ch: "數學", en: "math"}, {no: 302, ch: "音樂", en: "music"},
+    {no: 303, ch: "體育", en: "PE (Physical Education)"}, {no: 304, ch: "科學", en: "science"}, {no: 305, ch: "社會", en: "social studies"},
+    {no: 306, ch: "他的", en: "his"}, {no: 307, ch: "她的", en: "her"}, {no: 308, ch: "我們的", en: "our"},
+    {no: 309, ch: "他們的", en: "their"}, {no: 310, ch: "你最喜歡的科目是什麼?", en: "What's your favorite subject?"}, {no: 311, ch: "我最喜歡的科目是英文。", en: "My favorite subject is English."},
+    {no: 312, ch: "他最喜歡的科目是什麼?", en: "What's his favorite subject?"}
+];
+
+// 313-364 四年級下學期
+const data9 = [
+    {no: 313, ch: "麵包店", en: "bakery"}, {no: 314, ch: "銀行", en: "bank"}, {no: 315, ch: "書局", en: "bookstore"},
+    {no: 316, ch: "醫院", en: "hospital"}, {no: 317, ch: "公園", en: "park"}, {no: 318, ch: "郵局", en: "post office"},
+    {no: 319, ch: "餐廳", en: "restaurant"}, {no: 320, ch: "超市", en: "supermarket"}, {no: 321, ch: "你正要去哪裡?", en: "Where are you going?"},
+    {no: 322, ch: "我正要去銀行。", en: "I'm going to the bank."}, {no: 323, ch: "你正要去麵包店嗎?", en: "Are you going to the bakery?"}, {no: 324, ch: "是的，我是/不，我沒有。", en: "Yes, I am. / No, I'm not."},
+    {no: 325, ch: "我正要去書局。", en: "I'm going to the bookstore."}, {no: 326, ch: "騎腳踏車", en: "by bike"}, {no: 327, ch: "搭公車", en: "by bus"},
+    {no: 328, ch: "搭汽車", en: "by car"}, {no: 329, ch: "搭捷運", en: "by MRT"}, {no: 330, ch: "搭飛機", en: "by plane"},
+    {no: 331, ch: "搭機車", en: "by scooter"}, {no: 332, ch: "搭計程車", en: "by taxi"}, {no: 333, ch: "搭火車", en: "by train"},
+    {no: 334, ch: "我們如何去公園?", en: "How can we get to the park?"}, {no: 335, ch: "我們搭公車去公園。", en: "We get to the park by bus."}, {no: 336, ch: "我們能騎腳踏車去公園嗎?", en: "Can we get to the park by bike?"},
+    {no: 337, ch: "是的，我們可以/不，我們不行。", en: "Yes, we can. / No, we can't."}, {no: 338, ch: "我們可以搭公車去那裏。", en: "We can get there by bus."}, {no: 339, ch: "一件洋裝", en: "a dress"},
+    {no: 340, ch: "一件裙子", en: "a skirt"}, {no: 341, ch: "一件毛衣", en: "a sweater"}, {no: 342, ch: "一件T恤", en: "a T-shirt"},
+    {no: 343, ch: "長褲(複數)", en: "the pants"}, {no: 344, ch: "短褲(複數)", en: "the shorts"}, {no: 345, ch: "運動鞋(複數)", en: "the sneakers"},
+    {no: 346, ch: "襪子(複數)", en: "the socks"}, {no: 347, ch: "多少錢", en: "how much"}, {no: 348, ch: "這件洋裝多少錢?", en: "How much is the dress?"},
+    {no: 349, ch: "900元", en: "It's nine hundred dollars."}, {no: 350, ch: "這條長褲多少錢?", en: "How much are the pants?"}, {no: 351, ch: "450元", en: "They're four hundred and fifty dollars."},
+    {no: 352, ch: "夾克", en: "jacket"}, {no: 353, ch: "手機", en: "smartphone / cell phone"}, {no: 354, ch: "一把雨傘", en: "an umbrella"},
+    {no: 355, ch: "手錶", en: "watch"}, {no: 356, ch: "水壺", en: "water bottle"}, {no: 357, ch: "眼鏡(複數)", en: "glasses"},
+    {no: 358, ch: "鑰匙(複數)", en: "keys"}, {no: 359, ch: "凱文的", en: "Kevin's"}, {no: 360, ch: "它們是", en: "they're (they are)"},
+    {no: 361, ch: "它是誰的夾克?", en: "Whose jacket is it?"}, {no: 362, ch: "它是凱文的夾克。", en: "It's Kevin's jacket."}, {no: 363, ch: "它們是誰的眼鏡?", en: "Whose glasses are they?"},
+    {no: 364, ch: "它們是我的眼鏡。", en: "They're my glasses."}
+];
+
+// 365-416 五年級上學期
+const data10 = [
+    {no: 365, ch: "澳洲", en: "Australia"}, {no: 366, ch: "加拿大", en: "Canada"}, {no: 367, ch: "法國", en: "France"},
+    {no: 368, ch: "印度", en: "India"}, {no: 369, ch: "日本", en: "Japan"}, {no: 370, ch: "中華民國(台灣)", en: "the ROC (Taiwan)"},
+    {no: 371, ch: "英國", en: "the UK"}, {no: 372, ch: "美國", en: "the USA"}, {no: 373, ch: "從", en: "from"},
+    {no: 374, ch: "你從哪裡來?", en: "Where are you from?"}, {no: 375, ch: "我來自日本。", en: "I'm from Japan."}, {no: 376, ch: "他來自美國嗎?", en: "Is he from the USA?"},
+    {no: 377, ch: "是的，他是。", en: "Yes, he is."}, {no: 378, ch: "不，他不是。", en: "No, he's not."}, {no: 379, ch: "他來自英國。", en: "He's from the UK."},
+    {no: 380, ch: "感冒", en: "cold"}, {no: 381, ch: "咳嗽", en: "cough"}, {no: 382, ch: "發燒", en: "fever"},
+    {no: 383, ch: "頭痛", en: "headache"}, {no: 384, ch: "胃痛", en: "stomachache"}, {no: 385, ch: "牙齒痛", en: "toothache"},
+    {no: 386, ch: "流鼻水", en: "runny nose"}, {no: 387, ch: "錯誤的;不對勁的", en: "wrong"}, {no: 388, ch: "怎麼了?", en: "What's wrong?"},
+    {no: 389, ch: "我頭痛。", en: "I have a headache."}, {no: 390, ch: "她咳嗽。", en: "She has a cough."}, {no: 391, ch: "一些披薩", en: "some pizza"},
+    {no: 392, ch: "一些米飯", en: "some rice"}, {no: 393, ch: "一些湯", en: "some soup"}, {no: 394, ch: "一些牛排", en: "some steak"},
+    {no: 395, ch: "一些水餃(複數)", en: "some dumplings"}, {no: 396, ch: "一些麵條(複數)", en: "some noodles"}, {no: 397, ch: "一些三明治(複數)", en: "some sandwiches"},
+    {no: 398, ch: "薯條(複數)", en: "French fries"}, {no: 399, ch: "表請求、意願的助動詞", en: "would"}, {no: 400, ch: "你想吃什麼?", en: "What would you like to eat?"},
+    {no: 401, ch: "我想要一些披薩。", en: "I'd like some pizza, please."}, {no: 402, ch: "你想要一些麵嗎?", en: "Would you like some noodles?"}, {no: 403, ch: "是的，請給我。", en: "Yes, please."},
+    {no: 404, ch: "不用。謝謝你。", en: "No, thank you."}, {no: 405, ch: "做我的功課", en: "do my homework"}, {no: 406, ch: "吃早餐", en: "have breakfast"},
+    {no: 407, ch: "吃午餐", en: "have lunch"}, {no: 408, ch: "吃晚餐", en: "have dinner"}, {no: 409, ch: "起床", en: "get up"},
+    {no: 410, ch: "去學校", en: "go to school"}, {no: 411, ch: "回家", en: "go home"}, {no: 412, ch: "上床睡覺", en: "go to bed"},
+    {no: 413, ch: "你幾點起床?", en: "What time do you get up?"}, {no: 414, ch: "我六點半起床。", en: "I get up at six thirty."}, {no: 415, ch: "你十二點吃午餐嗎?", en: "Do you have lunch at twelve?"},
+    {no: 416, ch: "是的，我有。", en: "Yes, I do."}
+];
+
+// 417-468 五年級下學期
+const data11 = [
+    {no: 417, ch: "聽音樂", en: "listen to music"}, {no: 418, ch: "打籃球", en: "play basketball"}, {no: 419, ch: "看電視", en: "watch TV"},
+    {no: 420, ch: "去露營", en: "go camping"}, {no: 421, ch: "去健行", en: "go hiking"}, {no: 422, ch: "去購物", en: "go shopping"},
+    {no: 423, ch: "去游泳", en: "go swimming"}, {no: 424, ch: "在你的休閒時間", en: "in your free time"}, {no: 425, ch: "你喜歡做什麼?", en: "What do you like to do?"},
+    {no: 426, ch: "我喜歡去健行。", en: "I like to go hiking."}, {no: 427, ch: "你喜歡去露營嗎?", en: "Do you like to go camping?"}, {no: 428, ch: "是的。我喜歡。", en: "Yes, I do."},
+    {no: 429, ch: "不，我不喜歡。", en: "No, I don't."}, {no: 430, ch: "我喜歡看電視。", en: "I like to watch TV."}, {no: 431, ch: "藝術家", en: "artist"},
+    {no: 432, ch: "牙醫師", en: "dentist"}, {no: 433, ch: "農夫", en: "farmer"}, {no: 434, ch: "歌手", en: "singer"},
+    {no: 435, ch: "作家", en: "writer"}, {no: 436, ch: "公車司機", en: "bus driver"}, {no: 437, ch: "籃球員", en: "basketball player"},
+    {no: 438, ch: "警察(官)", en: "police officer"}, {no: 439, ch: "你想要成為什麼?", en: "What do you want to be?"}, {no: 440, ch: "我想要當一名警官。", en: "I want to be a police officer."},
+    {no: 441, ch: "你想要成為作家嗎?", en: "Do you want to be a writer?"}, {no: 442, ch: "是的，我想。", en: "Yes, I do."}, {no: 443, ch: "不，我不想。", en: "No, I don't."},
+    {no: 444, ch: "我想要成為一名籃球員。", en: "I want to be a basketball player."}, {no: 445, ch: "兩天前", en: "two days ago"}, {no: 446, ch: "昨天", en: "yesterday"},
+    {no: 447, ch: "昨天晚上", en: "last night"}, {no: 448, ch: "今天早上", en: "this morning"}, {no: 449, ch: "一個小時以前", en: "an hour ago"},
+    {no: 450, ch: "你昨天晚上在哪裡?", en: "Where were you last night?"}, {no: 451, ch: "我是(過去式)", en: "I was"}, {no: 452, ch: "在超市", en: "at the supermarket"},
+    {no: 453, ch: "你一個小時前在麵包店嗎?", en: "Were you at the bakery an hour ago?"}, {no: 454, ch: "是的，我是。", en: "Yes, I was."}, {no: 455, ch: "不，我沒有。", en: "No. I wasn't."},
+    {no: 456, ch: "我在公園。", en: "I was at the park."}, {no: 457, ch: "圖書館", en: "library"}, {no: 458, ch: "博物館", en: "museum"},
+    {no: 459, ch: "咖啡廳", en: "coffee shop"}, {no: 460, ch: "電影院", en: "movie theater"}, {no: 461, ch: "夜市", en: "night market"},
+    {no: 462, ch: "運動中心", en: "sports center"}, {no: 463, ch: "他昨天在哪裡?", en: "Where was he yesterday?"}, {no: 464, ch: "他在圖書館。", en: "He was at the library."},
+    {no: 465, ch: "她兩天前在博物館嗎?", en: "Was she at the museum two days ago?"}, {no: 466, ch: "是的，她是。", en: "Yes, she was."}, {no: 467, ch: "不，她不是。", en: "No, she wasn't."},
+    {no: 468, ch: "她在咖啡廳。", en: "She was at the coffee shop."}
+];
+
+// 469-520 六年級上學期
+const data12 = [
+    {no: 469, ch: "打掃房間(過去式)", en: "cleaned the room"}, {no: 470, ch: "煮晚餐(過去式)", en: "cooked dinner"}, {no: 471, ch: "吹直笛(過去式)", en: "played the recorder"},
+    {no: 472, ch: "拜訪我的祖父母(過去式)", en: "visited my grandparents"}, {no: 473, ch: "遛狗(過去式)", en: "walked the dog"}, {no: 474, ch: "看一部電影(過去式)", en: "watched a movie"},
+    {no: 475, ch: "你昨天做什麼?", en: "What did you do yesterday?"}, {no: 476, ch: "我昨天打掃房間。", en: "I cleaned the room yesterday."}, {no: 477, ch: "你昨天清理房間嗎?", en: "Did you clean the room yesterday?"},
+    {no: 478, ch: "是的，我有。", en: "Yes, I did."}, {no: 479, ch: "不，我沒有。", en: "No, I didn't."}, {no: 480, ch: "我昨天煮晚餐。", en: "I cooked dinner yesterday."},
+    {no: 481, ch: "洗碗盤(過去式)", en: "did the dishes"}, {no: 482, ch: "洗衣服(過去式)", en: "did the laundry"}, {no: 483, ch: "吃早餐(過去式)", en: "had breakfast"},
+    {no: 484, ch: "吃午餐(過去式)", en: "had lunch"}, {no: 485, ch: "吃晚餐(過去式)", en: "had dinner"}, {no: 486, ch: "去購物(過去式)", en: "went shopping"},
+    {no: 487, ch: "去游泳(過去式)", en: "went swimming"}, {no: 488, ch: "你幾點吃早餐?", en: "What time did you have breakfast?"}, {no: 489, ch: "我七點鐘吃早餐", en: "I had breakfast at seven o'clock."},
+    {no: 490, ch: "你昨天去游泳嗎?", en: "Did you go swimming yesterday?"}, {no: 491, ch: "是的。我有。", en: "Yes, I did."}, {no: 492, ch: "不，我沒有。", en: "No, I didn't."},
+    {no: 493, ch: "我昨天去購物。", en: "I went shopping yesterday."}, {no: 494, ch: "海灘", en: "beach"}, {no: 495, ch: "森林", en: "forest"},
+    {no: 496, ch: "島嶼", en: "island"}, {no: 497, ch: "湖泊", en: "lake"}, {no: 498, ch: "山(脈)", en: "mountain"},
+    {no: 499, ch: "河流", en: "river"}, {no: 500, ch: "溫泉", en: "hot spring"}, {no: 501, ch: "你上個週末去哪裡?", en: "Where did you go last weekend?"},
+    {no: 502, ch: "我上個週末去日月潭。", en: "I went to Sun Moon Lake last weekend."}, {no: 503, ch: "你上週五去日月潭嗎?", en: "Did you go to Sun Moon Lake last Friday?"}, {no: 504, ch: "是的，我是。", en: "Yes, I did."},
+    {no: 505, ch: "不，我沒有。", en: "No, I didn't."}, {no: 506, ch: "我上週五去綠島。", en: "I went to Green Island last Friday."}, {no: 507, ch: "便利商店", en: "convenience store"},
+    {no: 508, ch: "捷運站", en: "MRT station"}, {no: 509, ch: "科學博物館", en: "science museum"}, {no: 510, ch: "茶飲店", en: "tea shop"},
+    {no: 511, ch: "在......對面", en: "across from"}, {no: 512, ch: "在.......之間", en: "between"}, {no: 513, ch: "在.......旁邊", en: "next to"},
+    {no: 514, ch: "茶飲店在哪裡?", en: "Where is the tea shop?"}, {no: 515, ch: "它在公園街。", en: "It's on Park Street."}, {no: 516, ch: "它在科學博物館和公園之間。", en: "It's between the science museum and the park."},
+    {no: 517, ch: "捷運站在飲料店旁邊嗎?", en: "Is the MRT station next to the tea shop?"}, {no: 518, ch: "是的，它是。", en: "Yes, it is."}, {no: 519, ch: "不，它不是。", en: "No, it's not."},
+    {no: 520, ch: "它在茶飲店對面。", en: "It's across from the tea shop."}
+];
+
+
+
+
 function speak(text) {
+    // 移除底線、括號內容，避免發音出錯
     const cleanText = text.replace(/_+/g, '').replace(/\(.*\)/g, '');
     const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = 'en-US'; 
+    utterance.lang = 'en-US'; // 美式英語
     window.speechSynthesis.speak(utterance);
 }
 
-// 支援雙語發音的函數 (英/中)
-function speakLang(text, lang) {
-    const cleanText = text.replace(/_+/g, '').replace(/[\[\]\(\)]/g, ''); 
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = lang; 
-    if(lang === 'zh-TW') utterance.rate = 0.9;
-    window.speechSynthesis.speak(utterance);
-}
-
-// 原有的表格渲染函數
 function renderTable(data, tableId) {
     const tbody = document.getElementById(tableId);
     data.forEach(item => {
@@ -232,42 +385,19 @@ function renderTable(data, tableId) {
     });
 }
 
-// GEPT 表格渲染函數
-function renderGeptTable(data, tableId) {
-    const tbody = document.getElementById(tableId);
-    data.forEach(item => {
-        let tagClass = "tag-junior";
-        if(item.category === "國小") tagClass = "tag-elem";
-        if(item.category === "高中") tagClass = "tag-senior";
-
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td><b>${item.no}</b></td>
-            <td><span class="tag ${tagClass}">${item.category}</span></td>
-            <td>
-                <b style="font-size:1.1em; color:#2980b9;">${item.en}</b><br>
-                <span>${item.ch}</span>
-            </td>
-            <td>
-                <div class="grammar-text">✦ <b>語法：</b>${item.grammar}</div>
-                <div class="app-text">📝 <b>應用：</b>${item.app_en}<br>${item.app_ch}</div>
-            </td>
-            <td>
-                <button class="btn-gept-speak" onclick="speakLang('${item.en.replace(/'/g, "\\'")}. ${item.app_en.replace(/'/g, "\\'")}', 'en-US')" title="聽英文">英🔊</button>
-                <button class="btn-gept-speak zh" onclick="speakLang('${item.ch}. ${item.grammar}. ${item.app_ch}', 'zh-TW')" title="聽中文">中🔊</button>
-            </td>
-        `;
-        tbody.appendChild(tr);
-    });
-}
-
-// 執行所有渲染
+// 執行表格渲染
 renderTable(data1, 'table1');
 renderTable(data2, 'table2');
 renderTable(data3, 'table3');
 renderTable(data4, 'table4');
-renderGeptTable(geptData, 'table-gept'); 
-
+renderTable(data5, 'table5');
+renderTable(data6, 'table6');
+renderTable(data7, 'table7');
+renderTable(data8, 'table8');
+renderTable(data9, 'table9');
+renderTable(data10, 'table10');
+renderTable(data11, 'table11');
+renderTable(data12, 'table12');
 </script>
 
 </body>
