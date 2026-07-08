@@ -3,29 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英語單字王拼字發音練習 筌凱 VS 閎森 (全)</title>
+    <title>英語單字王拼字比賽發音練習 (全)</title>
     <style>
+        /* 平滑捲動效果 */
+        html { scroll-behavior: smooth; }
+        
         body { font-family: Arial, sans-serif; margin: 10px; background-color: #f5f7fa; font-size: 15px; color: #333; }
-        h2 { text-align: center; color: #2c3e50; font-size: 1.3rem; margin-bottom: 5px; }
+        h2 { text-align: center; color: #2c3e50; font-size: 1.3rem; margin-bottom: 5px; margin-top: 60px; }
         h3 { text-align: center; color: #7f8c8d; font-size: 0.9rem; margin-top: 0; margin-bottom: 20px; }
-        .section { background: white; border: 1px solid #e1e8ed; padding: 12px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0,05); }
+        
+        /* 導覽列樣式設計 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2c3e50;
+            padding: 12px 0;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 8px;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: background 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .navbar a:hover { background-color: #34495e; }
+        .navbar a.nav-gept { background-color: #e67e22; }
+        .navbar a.nav-gept:hover { background-color: #d35400; }
+
+        /* 設定錨點偏移，避免被置頂選單擋住 */
+        .section { background: white; border: 1px solid #e1e8ed; padding: 12px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); scroll-margin-top: 70px; }
         .section-title { font-weight: bold; font-size: 1em; background-color: #34495e; color: white; padding: 8px; border-radius: 6px; margin-bottom: 10px; text-align: center; }
+        
+        .gept-title { background-color: #e67e22; } 
+        
         table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #efeef0; padding: 10px 6px; text-align: left; }
+        th, td { border: 1px solid #efeef0; padding: 10px 6px; text-align: left; vertical-align: top; }
         th { background-color: #f8f9fa; color: #666; }
         tr:nth-child(even) { background-color: #fcfcfc; }
+        
+        /* 發音按鈕樣式 */
         .btn-speak { background: #2ecc71; color: white; border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 16px; display: block; margin: 0 auto; }
         .btn-speak:active { background: #27ae60; }
+        
+        .btn-gept-speak { background: #2ecc71; color: white; border: none; padding: 6px 10px; border-radius: 20px; cursor: pointer; font-size: 14px; margin: 2px; }
+        .btn-gept-speak:active { background: #27ae60; }
+        .btn-gept-speak.zh { background: #3498db; }
+        .btn-gept-speak.zh:active { background: #2980b9; }
+        
+        /* 英檢標籤樣式 */
+        .tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; color: white; margin-bottom: 5px; }
+        .tag-elem { background-color: #f1c40f; color: #333;}
+        .tag-junior { background-color: #3498db; }
+        .tag-senior { background-color: #9b59b6; }
+        
+        .grammar-text { font-size: 0.9em; color: #e74c3c; margin-bottom: 5px; }
+        .app-text { font-size: 0.9em; color: #7f8c8d; }
+        
         b { color: #34495e; }
     </style>
 </head>
 <body>
 
-<h2>英語單字王拼字比賽</h2>
-<h3>單字與句型總表 (1-104 全系列)</h3>
+<!-- 置頂導覽列 -->
+<div class="navbar">
+    <a href="#grade1">一年級</a>
+    <a href="#grade2">二年級</a>
+    <a href="#grade3">三年級</a>
+    <a href="#grade4">四年級</a>
+    <a href="#grade5">五年級</a>
+    <a href="#grade6">六年級</a>
+    <a href="#gept" class="nav-gept">🏅 全民英檢</a>
+</div>
+
+<h2>實踐國小 英語單字王拼字比賽</h2>
+<h3>單字與句型總表 (1-520 全系列)</h3>
 
 <!-- 1-26 一年級 -->
-<div class="section">
+<div class="section" id="grade1">
     <div class="section-title">康軒 Go Go Starter 1.2 (一年級)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文</th><th width="35%">英文</th><th width="15%">發音</th></tr></thead>
@@ -42,8 +108,8 @@
     </table>
 </div>
 
-<!-- 53-78 二年級 -->
-<div class="section">
+<!-- 53-78 二年級上學期 -->
+<div class="section" id="grade2">
     <div class="section-title">康軒 Wonder World 1 (二年級上)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
@@ -70,7 +136,7 @@
 </div>
 
 <!-- 131-208 三年級上學期 -->
-<div class="section">
+<div class="section" id="grade3">
     <div class="section-title">康軒 Wonder World 3 (三年級上學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
@@ -88,7 +154,7 @@
 </div>
 
 <!-- 261-312 四年級上學期 -->
-<div class="section">
+<div class="section" id="grade4">
     <div class="section-title">康軒 Wonder World 5 (四年級上學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
@@ -106,7 +172,7 @@
 </div>
 
 <!-- 365-416 五年級上學期 -->
-<div class="section">
+<div class="section" id="grade5">
     <div class="section-title">康軒 Wonder World 7 (五年級上學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
@@ -124,7 +190,7 @@
 </div>
 
 <!-- 469-520 六年級上學期 -->
-<div class="section">
+<div class="section" id="grade6">
     <div class="section-title">康軒 Wonder World 9 (六年級上學期)</div>
     <table>
         <thead><tr><th width="15%">No.</th><th width="35%">中文/句型</th><th width="35%">英文/句型</th><th width="15%">發音</th></tr></thead>
@@ -132,7 +198,26 @@
     </table>
 </div>
 
+<!-- GEPT 全民英檢初級 -->
+<div class="section" id="gept">
+    <div class="section-title gept-title">🏆 新制 GEPT 全民英檢初級 必背單字與語法</div>
+    <table>
+        <thead>
+            <tr>
+                <th width="5%">No.</th>
+                <th width="12%">階段</th>
+                <th width="23%">英文 / 中文</th>
+                <th width="40%">語法解說 / 生活應用</th>
+                <th width="20%">發音練習</th>
+            </tr>
+        </thead>
+        <tbody id="table-gept"></tbody>
+    </table>
+</div>
+
 <script>
+// ================= 資料庫區塊 =================
+
 // 1-26 一年級
 const data1 = [
     {no: 1, ch: "蘋果", en: "apple"}, {no: 2, ch: "螞蟻", en: "ant"}, {no: 3, ch: "男孩", en: "boy"},
@@ -360,14 +445,78 @@ const data12 = [
     {no: 520, ch: "它在茶飲店對面。", en: "It's across from the tea shop."}
 ];
 
+// GEPT 資料結構 
+const geptData = [
+    {
+        no: 1, 
+        category: "國小", 
+        en: "ability", 
+        ch: "能力", 
+        grammar: "[名詞] ability to + 原形動詞 (做...的能力)", 
+        app_en: "She has the ability to speak English well.",
+        app_ch: "她有說一口好英文的能力。"
+    },
+    {
+        no: 2, 
+        category: "國中", 
+        en: "carefully", 
+        ch: "小心地；仔細地", 
+        grammar: "[副詞] 修飾一般動詞，通常放在動詞後。", 
+        app_en: "Please drive carefully at night.",
+        app_ch: "夜間請小心開車。"
+    },
+    {
+        no: 3, 
+        category: "國中", 
+        en: "decide", 
+        ch: "決定", 
+        grammar: "[動詞] decide to + 原形動詞 (決定去做...)", 
+        app_en: "I decided to buy a new computer.",
+        app_ch: "我決定買一台新電腦。"
+    },
+    {
+        no: 4, 
+        category: "高中", 
+        en: "environment", 
+        ch: "環境", 
+        grammar: "[名詞] the environment 常指自然環境，不可數或單數。", 
+        app_en: "We must protect the environment.",
+        app_ch: "我們必須保護環境。"
+    },
+    {
+        no: 5, 
+        category: "國中", 
+        en: "look forward to", 
+        ch: "期待", 
+        grammar: "[片語] to 為介系詞，後方必接 V-ing 或名詞。", 
+        app_en: "I am looking forward to seeing you.",
+        app_ch: "我很期待能見到你。"
+    },
+    {
+        no: 6, 
+        category: "國小", 
+        en: "practice", 
+        ch: "練習", 
+        grammar: "[動詞/名詞] practice + V-ing (練習做...)", 
+        app_en: "You need to practice speaking English every day.",
+        app_ch: "你需要每天練習說英文。"
+    }
+];
 
-
+// ================= 程式邏輯區塊 =================
 
 function speak(text) {
-    // 移除底線、括號內容，避免發音出錯
     const cleanText = text.replace(/_+/g, '').replace(/\(.*\)/g, '');
     const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = 'en-US'; // 美式英語
+    utterance.lang = 'en-US'; 
+    window.speechSynthesis.speak(utterance);
+}
+
+function speakLang(text, lang) {
+    const cleanText = text.replace(/_+/g, '').replace(/[\[\]\(\)]/g, ''); 
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = lang; 
+    if(lang === 'zh-TW') utterance.rate = 0.9; 
     window.speechSynthesis.speak(utterance);
 }
 
@@ -380,6 +529,34 @@ function renderTable(data, tableId) {
             <td>${item.ch}</td>
             <td>${item.en}</td>
             <td><button class="btn-speak" onclick="speak('${item.en.replace(/'/g, "\\'")}')">🔊</button></td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+function renderGeptTable(data, tableId) {
+    const tbody = document.getElementById(tableId);
+    data.forEach(item => {
+        let tagClass = "tag-junior";
+        if(item.category === "國小") tagClass = "tag-elem";
+        if(item.category === "高中") tagClass = "tag-senior";
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td><b>${item.no}</b></td>
+            <td><span class="tag ${tagClass}">${item.category}</span></td>
+            <td>
+                <b style="font-size:1.1em; color:#2980b9;">${item.en}</b><br>
+                <span>${item.ch}</span>
+            </td>
+            <td>
+                <div class="grammar-text">✦ <b>語法：</b>${item.grammar}</div>
+                <div class="app-text">📝 <b>應用：</b>${item.app_en}<br>${item.app_ch}</div>
+            </td>
+            <td>
+                <button class="btn-gept-speak" onclick="speakLang('${item.en.replace(/'/g, "\\'")}. ${item.app_en.replace(/'/g, "\\'")}', 'en-US')" title="聽英文">英🔊</button>
+                <button class="btn-gept-speak zh" onclick="speakLang('${item.ch}. ${item.grammar}. ${item.app_ch}', 'zh-TW')" title="聽中文">中🔊</button>
+            </td>
         `;
         tbody.appendChild(tr);
     });
@@ -398,6 +575,7 @@ renderTable(data9, 'table9');
 renderTable(data10, 'table10');
 renderTable(data11, 'table11');
 renderTable(data12, 'table12');
+renderGeptTable(geptData, 'table-gept'); 
 
 </script>
 
